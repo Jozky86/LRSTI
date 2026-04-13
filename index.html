@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LRSTI 狼人杀人格测试</title>
+  <meta name="description" content="一套狼人杀主题的本地静态人格测试。">
+  <meta name="theme-color" content="#130f16">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section id="introScreen" class="screen is-active" aria-labelledby="introTitle">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">LRSTI</p>
+          <h1 id="introTitle">测一测你在狼人杀里到底像谁。</h1>
+          <p class="hero-sub">18 道题，测出你的发言风格、带队方式、藏身份能力和控场倾向。全程本地计算，不上传答案。</p>
+          <div class="hero-actions">
+            <button id="startBtn" class="btn btn-primary" type="button">开始测试</button>
+            <button id="resumeBtn" class="btn btn-secondary" type="button" hidden>继续上次</button>
+          </div>
+          <p class="tiny-note">纯娱乐向画像，不代表真实水平，也不会替你背锅出局。</p>
+        </div>
+
+        <div class="hero-panel">
+          <div class="crest">WOLF<br>ROOM</div>
+          <ul class="preview-list">
+            <li>盘逻辑</li>
+            <li>带节奏</li>
+            <li>藏身份</li>
+            <li>打冲锋</li>
+            <li>控场感</li>
+            <li>团队性</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="testScreen" class="screen" aria-labelledby="testTitle">
+      <header class="section-head">
+        <div>
+          <p class="eyebrow">QUESTION PHASE</p>
+          <h2 id="testTitle">天亮了，轮到你发言。</h2>
+        </div>
+        <button id="homeBtn" class="btn btn-ghost" type="button">回首页</button>
+      </header>
+
+      <div class="progress-wrap" aria-live="polite">
+        <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuenow="0" aria-valuemax="20">
+          <span id="progressFill"></span>
+        </div>
+        <span id="progressText">0 / 20</span>
+      </div>
+
+      <form id="quizForm" class="question-stack"></form>
+
+      <footer class="bottom-actions">
+        <div class="question-nav">
+          <button id="prevBtn" class="btn btn-secondary" type="button">上一题</button>
+          <span id="questionIndexText" class="question-index">第 1 题</span>
+          <button id="nextBtn" class="btn btn-secondary" type="button">下一题</button>
+        </div>
+        <div class="submit-wrap">
+          <p id="hintText">每题都要站边，不允许过麦。</p>
+          <button id="submitBtn" class="btn btn-primary" type="button" disabled>提交并查看结果</button>
+        </div>
+      </footer>
+    </section>
+
+    <section id="resultScreen" class="screen" aria-labelledby="resultTitle">
+      <div class="result-layout">
+        <article id="resultPoster" class="result-poster poster-fallback">
+          <img id="resultImage" class="result-image" src="" alt="" hidden>
+          <p class="poster-kicker" id="resultKicker">你的狼人杀画像</p>
+          <h2 id="resultTitle">夜雾局长</h2>
+          <p id="posterSubtitle" class="poster-subtitle">白天发言，夜里算刀。</p>
+          <div class="poster-meta">
+            <span id="matchBadge">匹配度 88%</span>
+            <span id="resultCode">FALLBACK</span>
+          </div>
+        </article>
+
+        <div class="result-copy">
+          <p class="eyebrow">RESULT</p>
+          <p id="resultSummary" class="result-summary"></p>
+          <p id="resultDesc" class="result-desc"></p>
+          <div class="result-actions">
+            <button id="copyBtn" class="btn btn-primary" type="button">复制结果</button>
+            <button id="restartBtn" class="btn btn-secondary" type="button">重新测试</button>
+          </div>
+        </div>
+      </div>
+
+      <section class="score-section" aria-labelledby="scoreTitle">
+        <h3 id="scoreTitle">六维狼人杀画像</h3>
+        <div id="scoreGrid" class="score-grid"></div>
+      </section>
+    </section>
+  </main>
+
+  <script src="./data.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
