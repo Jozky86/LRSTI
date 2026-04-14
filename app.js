@@ -169,6 +169,16 @@ const hiddenArchetypes = [
     )
   },
   {
+    type: TYPE_LIBRARY.SLACKER,
+    predicate: scores => (
+      scores.Logic <= 5 &&
+      scores.Aggro <= 5 &&
+      scores.Lead <= 5 &&
+      scores.Team <= 6 &&
+      scores.Emotion <= 6
+    )
+  },
+  {
     type: TYPE_LIBRARY.MECH_GUARD,
     predicate: scores => scores.Logic >= 8 && scores.Team >= 8 && scores.Aggro <= 5
   },

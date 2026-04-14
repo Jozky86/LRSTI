@@ -587,6 +587,10 @@ button {
   background: linear-gradient(135deg, #4a6a7a 0%, #1a2a33 48%, #091116 100%);
 }
 
+.poster-slacker {
+  background: linear-gradient(135deg, #6b6b6b 0%, #2a2a2a 48%, #111111 100%);
+}
+
 .poster-ladyknight {
   background: linear-gradient(135deg, #9b6b7d 0%, #381f2b 48%, #120a0f 100%);
 }

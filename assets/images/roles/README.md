@@ -16,6 +16,7 @@ DREAMER.png
 MAGICIAN.png
 JY.png
 HOOK.png
+SLACKER.png
 ```
 
 支持格式：
