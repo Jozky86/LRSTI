@@ -391,7 +391,7 @@ button {
 
 .poster-kicker {
   margin: 0 0 12px;
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(255, 255, 255, 0.92);
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -400,7 +400,7 @@ button {
 .poster-subtitle {
   margin: 14px 0 0;
   font-size: 18px;
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .poster-meta {
@@ -413,7 +413,9 @@ button {
 .poster-meta span {
   padding: 8px 12px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(8, 6, 12, 0.72);
+  color: #f6e6c8;
+  border: 1px solid rgba(246, 230, 200, 0.28);
   font-weight: 800;
 }
 
@@ -424,11 +426,13 @@ button {
 .result-summary {
   margin: 0;
   font-size: 18px;
+  color: #efe3d0;
 }
 
 .result-desc {
   margin: 18px 0 0;
   font-size: 16px;
+  color: #e6d7c1;
 }
 
 .result-actions {

@@ -3,6 +3,8 @@ const questions = QUESTIONS;
 const specialQuestions = SPECIAL_QUESTIONS;
 const dimensions = DIMENSIONS;
 const HOOK_TRIGGER_QUESTION_ID = "wolf_gate_q2";
+const QUESTION_PICK_COUNT = 18;
+const ARCHETYPE_BONUS_WEIGHT = 0.6;
 
 const explanationPools = {
   L: [
@@ -107,6 +109,39 @@ const resultTypes = NORMAL_TYPES.map(({ code, pattern }) => ({
   ...TYPE_LIBRARY[code],
   pattern: pattern.split("")
 }));
+
+const ARCHETYPE_WEIGHTS_BY_DIM_LEVEL = {
+  Logic: {
+    L: ["CIVIL", "IDIOT", "MASK"],
+    M: ["DIDI_SEER", "THIEF", "DREAMER"],
+    H: ["SEER", "KNIGHT", "ELDER"]
+  },
+  Aggro: {
+    L: ["GUARD", "CIVIL"],
+    M: ["HUNTER", "KNIGHT"],
+    H: ["WHITEWOLF", "ACTOR", "MECH_GUN"]
+  },
+  Lead: {
+    L: ["CIVIL", "MASK"],
+    M: ["DIDI_SEER", "DREAMER"],
+    H: ["ELDER", "SEER", "JY"]
+  },
+  Deception: {
+    L: ["IDIOT", "CIVIL"],
+    M: ["DREAMER", "GUARD"],
+    H: ["ACTOR", "MASK", "MECH_WOLF", "OK_CAPTAIN"]
+  },
+  Emotion: {
+    L: ["NIGHTMARE", "MASK"],
+    M: ["WOLF_BEAUTY", "CUPID"],
+    H: ["DANCER", "JESTER", "OK_CAPTAIN"]
+  },
+  Team: {
+    L: ["IDIOT", "WHITEWOLF"],
+    M: ["THIEF", "WITCH"],
+    H: ["GUARD", "DIDI_SEER", "MECH_GUARD", "CUPID"]
+  }
+};
 
 const hiddenType = TYPE_LIBRARY.HOOK;
 const hiddenArchetypes = [
@@ -230,7 +265,7 @@ function jumpToFirstUnanswered() {
 
 function start(fresh = true) {
   if (fresh || !state.order.length) {
-    state.order = shuffle(questions).map(item => item.id);
+    state.order = shuffle(questions).slice(0, QUESTION_PICK_COUNT).map(item => item.id);
     state.gateIndex = Math.floor(Math.random() * state.order.length) + 1;
     state.currentIndex = 0;
     state.answers = {};
@@ -334,6 +369,21 @@ function explanationForDimension(key, level) {
   return pool[index];
 }
 
+function bonusFromAnswers() {
+  const bonus = {};
+  questions.forEach(item => {
+    const answer = Number(state.answers[item.id] || 0);
+    if (!answer) return;
+    const level = answer === 1 ? "L" : answer === 2 ? "M" : "H";
+    const targets = ARCHETYPE_WEIGHTS_BY_DIM_LEVEL[item.dim]?.[level] || [];
+    targets.forEach(code => {
+      if (!TYPE_LIBRARY[code]) return;
+      bonus[code] = (bonus[code] || 0) + 1;
+    });
+  });
+  return bonus;
+}
+
 function tryLoadRoleImage(code) {
   const image = els.resultImage;
   image.hidden = true;
@@ -382,6 +432,7 @@ function computeResult() {
     scores[item.dim] += Number(state.answers[item.id] || 0);
   });
 
+  const bonusByCode = bonusFromAnswers();
   const levels = Object.fromEntries(
     dimensions.map(([key]) => [key, levelFromScore(scores[key])])
   );
@@ -406,13 +457,18 @@ function computeResult() {
       if (diff === 0) exact += 1;
     });
 
+    const bonus = bonusByCode[item.code] || 0;
+    const adjusted = distance - bonus * ARCHETYPE_BONUS_WEIGHT;
+
     return {
       type: item,
       distance,
       exact,
+      bonus,
+      adjusted,
       similarity: Math.max(0, Math.round((1 - distance / 12) * 100))
     };
-  }).sort((a, b) => a.distance - b.distance || b.exact - a.exact);
+  }).sort((a, b) => a.adjusted - b.adjusted || a.distance - b.distance || b.exact - a.exact);
 
   return {
     ...ranked[0],

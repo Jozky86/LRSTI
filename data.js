@@ -132,7 +132,7 @@ const QUESTIONS = [
   {
     id: "q14",
     dim: "Emotion",
-    text: "同桌在狼人杀里最容易觉得你像哪种玩家？",
+    text: "这桌玩家在狼人杀里最容易觉得你像哪种玩家？",
     options: [
       { label: "偏安静，主要靠观察、听感和后手。", value: 1 },
       { label: "稳定型，情绪和表达都比较顺。", value: 2 },
@@ -178,6 +178,226 @@ const QUESTIONS = [
       { label: "信息太少，主线一直不够清楚。", value: 2 },
       { label: "好人互打到散架，票型和结构彻底裂开。", value: 3 }
     ]
+  },
+  {
+    id: "q19",
+    dim: "Logic",
+    text: "警上两边都报验人，你第一时间更会先看什么？",
+    options: [
+      { label: "先看气口和状态，像不像真预言家。", value: 1 },
+      { label: "先看谁的警徽流更顺、更像真实视角。", value: 2 },
+      { label: "先拆发言逻辑和收益，找谁更自洽。", value: 3 }
+    ]
+  },
+  {
+    id: "q20",
+    dim: "Logic",
+    text: "场上出现互踩和互保同时存在的局面，你更习惯？",
+    options: [
+      { label: "先凭整体感觉给出一个粗略判断。", value: 1 },
+      { label: "先抓关键矛盾点，再决定站边。", value: 2 },
+      { label: "把关系链拆开，一段段盘清楚。", value: 3 }
+    ]
+  },
+  {
+    id: "q21",
+    dim: "Logic",
+    text: "你复盘一轮发言时最先补哪一块？",
+    options: [
+      { label: "谁的听感不对劲。", value: 1 },
+      { label: "主线站边有没有跑偏。", value: 2 },
+      { label: "发言前后有没有断层或收益问题。", value: 3 }
+    ]
+  },
+  {
+    id: "q22",
+    dim: "Logic",
+    text: "当你和验人/刀口信息冲突时，你更倾向？",
+    options: [
+      { label: "先信直觉，再慢慢验证。", value: 1 },
+      { label: "先观望一轮，看整体站边再定。", value: 2 },
+      { label: "先把信息整合成逻辑链再下结论。", value: 3 }
+    ]
+  },
+  {
+    id: "q23",
+    dim: "Aggro",
+    text: "警下发言时你更像哪种对抗节奏？",
+    options: [
+      { label: "先稳住，不轻易把局面打炸。", value: 1 },
+      { label: "看轮次，该硬就硬。", value: 2 },
+      { label: "直接拍点，强势压节奏。", value: 3 }
+    ]
+  },
+  {
+    id: "q24",
+    dim: "Aggro",
+    text: "你最能接受的“强硬发言”是哪种？",
+    options: [
+      { label: "只在关键轮次短暂拉强度。", value: 1 },
+      { label: "遇到明显爆点就加压。", value: 2 },
+      { label: "只要有麦就持续输出压迫感。", value: 3 }
+    ]
+  },
+  {
+    id: "q25",
+    dim: "Aggro",
+    text: "你在场上被质疑时更像？",
+    options: [
+      { label: "先解释，避免情绪升级。", value: 1 },
+      { label: "解释+反点，保持平衡。", value: 2 },
+      { label: "直接反打，把对方推进狼坑。", value: 3 }
+    ]
+  },
+  {
+    id: "q26",
+    dim: "Aggro",
+    text: "你更认可哪种“冲锋”方式？",
+    options: [
+      { label: "低调顶住关键轮次就够了。", value: 1 },
+      { label: "看形势，必要时顶一波。", value: 2 },
+      { label: "主动制造压迫，把节奏掌握在手里。", value: 3 }
+    ]
+  },
+  {
+    id: "q27",
+    dim: "Lead",
+    text: "票型分裂时你会不会出来归票？",
+    options: [
+      { label: "不太会，我更愿意跟信息走。", value: 1 },
+      { label: "局面够清楚我会试着归。", value: 2 },
+      { label: "我会主动定调，尽量统一票型。", value: 3 }
+    ]
+  },
+  {
+    id: "q28",
+    dim: "Lead",
+    text: "你对“带队”这件事的感觉是？",
+    options: [
+      { label: "能不带就不带，怕背锅。", value: 1 },
+      { label: "有机会就试着带一带。", value: 2 },
+      { label: "我习惯接主线，把节奏拉起来。", value: 3 }
+    ]
+  },
+  {
+    id: "q29",
+    dim: "Lead",
+    text: "你更像哪种发言节奏？",
+    options: [
+      { label: "说清自己的看法就好。", value: 1 },
+      { label: "给出建议，等场上反馈。", value: 2 },
+      { label: "明确路线，带着大家走。", value: 3 }
+    ]
+  },
+  {
+    id: "q30",
+    dim: "Lead",
+    text: "当场面混乱时你更会做什么？",
+    options: [
+      { label: "先稳住自己，不急着主导。", value: 1 },
+      { label: "补几句方向，帮助大家对齐。", value: 2 },
+      { label: "直接收线，尽快统一视角。", value: 3 }
+    ]
+  },
+  {
+    id: "q31",
+    dim: "Deception",
+    text: "你在需要隐藏身份时更像？",
+    options: [
+      { label: "容易露状态，藏得不太稳。", value: 1 },
+      { label: "大致能藏住，但细节有风险。", value: 2 },
+      { label: "能藏得很顺，还能顺手做高自己。", value: 3 }
+    ]
+  },
+  {
+    id: "q32",
+    dim: "Deception",
+    text: "你对“反做身份”的理解更接近？",
+    options: [
+      { label: "不太会用，怕翻车。", value: 1 },
+      { label: "必要时会用一点。", value: 2 },
+      { label: "很常用，是我的主打法之一。", value: 3 }
+    ]
+  },
+  {
+    id: "q33",
+    dim: "Deception",
+    text: "你擅不擅长用含蓄表达传递信息？",
+    options: [
+      { label: "不太擅长，倾向直接说。", value: 1 },
+      { label: "偶尔会用，但不经常。", value: 2 },
+      { label: "很擅长，会用暗号和留白传重点。", value: 3 }
+    ]
+  },
+  {
+    id: "q34",
+    dim: "Deception",
+    text: "你对“做牌面”的态度更像？",
+    options: [
+      { label: "能不做就不做。", value: 1 },
+      { label: "适度做一点就够。", value: 2 },
+      { label: "会认真经营自己的牌面。", value: 3 }
+    ]
+  },
+  {
+    id: "q35",
+    dim: "Emotion",
+    text: "你在场上的情绪表达更像？",
+    options: [
+      { label: "平稳克制，尽量不带情绪。", value: 1 },
+      { label: "有起伏但能控制。", value: 2 },
+      { label: "情绪表达很强，能带动场面。", value: 3 }
+    ]
+  },
+  {
+    id: "q36",
+    dim: "Emotion",
+    text: "你对“梗”和“戏剧感”在牌桌上的态度？",
+    options: [
+      { label: "尽量少来，怕影响判断。", value: 1 },
+      { label: "适当点缀，气氛好就行。", value: 2 },
+      { label: "很喜欢用，牌桌需要气氛。", value: 3 }
+    ]
+  },
+  {
+    id: "q37",
+    dim: "Emotion",
+    text: "关键轮你更像哪种状态？",
+    options: [
+      { label: "更安静更稳，压住情绪。", value: 1 },
+      { label: "紧张但能稳住。", value: 2 },
+      { label: "越关键越兴奋，输出更强。", value: 3 }
+    ]
+  },
+  {
+    id: "q38",
+    dim: "Team",
+    text: "你对团队一致性的理解更接近？",
+    options: [
+      { label: "各自发挥也行，不必强统一。", value: 1 },
+      { label: "关键轮统一就够了。", value: 2 },
+      { label: "最好能长期对齐视角和票型。", value: 3 }
+    ]
+  },
+  {
+    id: "q39",
+    dim: "Team",
+    text: "你更容易和哪种队友节奏对齐？",
+    options: [
+      { label: "各打各的，互不干扰也行。", value: 1 },
+      { label: "愿意多沟通，慢慢对齐。", value: 2 },
+      { label: "喜欢统一节奏，越同步越舒服。", value: 3 }
+    ]
+  },
+  {
+    id: "q40",
+    dim: "Team",
+    text: "队友判断和你相反时你更像？",
+    options: [
+      { label: "先坚持自己的判断。", value: 1 },
+      { label: "先沟通，看能不能互相说服。", value: 2 },
+      { label: "优先保团队结构，再争细节。", value: 3 }
+    ]
   }
 ];
 
@@ -189,7 +409,7 @@ const SPECIAL_QUESTIONS = [
     text: "如果你拿狼，你最享受哪种赢法？",
     options: [
       { label: "深水混过去，能苟到后面最好。", value: 1 },
-      { label: "看板子和同桌，灵活切打法。", value: 2 },
+      { label: "看板子和这桌玩家，灵活切打法。", value: 2 },
       { label: "倒钩、反踩、经营身份，把自己一路做成金水脸。", value: 3 }
     ]
   },
@@ -323,7 +543,7 @@ const TYPE_LIBRARY = {
     code: "THIEF",
     name: "切牌盗宝大师",
     subtitle: "你很会根据局势选一张最适合自己的牌面来开局。",
-    summary: "你最大的优势是灵活。你不容易被一种固定打法绑住，而是很擅长根据板子、位置和同桌风格，挑选一条最适合自己的路线进入比赛。",
+    summary: "你最大的优势是灵活。你不容易被一种固定打法绑住，而是很擅长根据板子、位置和这桌玩家风格，挑选一条最适合自己的路线进入比赛。",
     desc: "你像盗宝大师这张牌的地方，在于选择能力和身份感。你会自然地判断：这局更适合神的气质、民的外壳，还是干脆把狼的节奏打透。你很懂得顺着环境调整表达方式，也很会在不同身份叙事里切换自己的重心。这个画像代表的是适应力、判断力和很强的桌面弹性，让人觉得你像一张随时能根据局势重新洗好的牌。",
     accent: "poster-thief"
   },
